@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/suraname-details.dart';
+import 'package:untitled/abbscreens/quran/suraname-details.dart';
 
 class Quran extends StatelessWidget {
   static List<String> namelist = [

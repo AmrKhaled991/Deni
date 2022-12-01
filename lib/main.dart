@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:untitled/abbscreens/7adeth/hadeth_detals.dart';
 import 'package:untitled/home_screen.dart';
-import 'package:untitled/suraname-details.dart';
+import 'package:untitled/abbscreens/quran/suraname-details.dart';
 import 'package:untitled/themedata.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class Myapp extends StatelessWidget {
         theme: Themedata.lighttheme,
         routes: {
           Homescreen.routname: (context) => Homescreen(),
-          Sura_detals.routname: (context) => Sura_detals()
+          Sura_detals.routname: (context) => Sura_detals(),
+          Hadethdetails.routname: (context) => Hadethdetails()
         },
         initialRoute: Homescreen.routname);
   }

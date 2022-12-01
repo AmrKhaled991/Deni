@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/abbscreens/ahades.dart';
-import 'package:untitled/abbscreens/quran.dart';
+import 'package:untitled/abbscreens/7adeth/ahades.dart';
+import 'package:untitled/abbscreens/quran/quran.dart';
 import 'package:untitled/abbscreens/radio.dart';
 import 'package:untitled/abbscreens/sebha.dart';
 import 'package:untitled/themedata.dart';
@@ -55,5 +55,5 @@ class _HomescreenState extends State<Homescreen> {
     );
   }
 
-  List<StatelessWidget> myscreen = [Quran(), Radioxe(), Ahades(), Sebha()];
+  List<Widget> myscreen = [Radioxe(), Sebha(), Ahades(), Quran()];
 }
