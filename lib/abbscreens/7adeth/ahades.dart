@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled/abbscreens/7adeth/hadeth_detals.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:untitled/provider/abbconfigprovider.dart';
+import 'package:untitled/themedata.dart';
 
 class Ahades extends StatefulWidget {
   @override
@@ -12,6 +16,7 @@ class _AhadesState extends State<Ahades> {
   List<hadethdata> hadeth77 = [];
 
   Widget build(BuildContext context) {
+    var provider = Provider.of<Appconfigprovider>(context);
     if (hadeth77.isEmpty) {
       loadahdethfile();
     }
@@ -22,21 +27,27 @@ class _AhadesState extends State<Ahades> {
           'assets/images/hadeth_image.png',
         )),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: provider.darkmode()
+              ? Themedata.yellowcolor
+              : Themedata.primarylight,
           thickness: 2,
         ),
         Text(
-          'ahadeth name',
-          style: Theme.of(context).textTheme.headline2,
+          AppLocalizations.of(context)!.hadethname,
+          style: Theme.of(context).primaryTextTheme.headline2,
         ),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: provider.darkmode()
+              ? Themedata.yellowcolor
+              : Themedata.primarylight,
           thickness: 2,
         ),
         Expanded(
             child: ListView.separated(
           separatorBuilder: (context, index) => Divider(
-            color: Theme.of(context).primaryColor,
+            color: provider.darkmode()
+                ? Themedata.yellowcolor
+                : Themedata.primarylight,
             thickness: 2,
           ),
           itemBuilder: (context, index) {
@@ -44,7 +55,7 @@ class _AhadesState extends State<Ahades> {
               child: Text(
                 hadeth77[index].title,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline3,
+                style: Theme.of(context).primaryTextTheme.headline3,
               ),
               onTap: () {
                 Navigator.of(context)
@@ -65,7 +76,6 @@ class _AhadesState extends State<Ahades> {
     String Allahadeth = await rootBundle.loadString('assets/files/ahadeth.txt');
 
     List<String> Onehadeth = Allahadeth.split('#\r\n');
-    print(Allahadeth);
     for (int i = 0; i < Onehadeth.length; i++) {
       List<String> lineshadeth = Onehadeth[i].split('\n');
       String title = lineshadeth[0];

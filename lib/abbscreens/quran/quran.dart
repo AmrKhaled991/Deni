@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled/abbscreens/quran/suraname-details.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:untitled/provider/abbconfigprovider.dart';
+import 'package:untitled/themedata.dart';
 
 class Quran extends StatelessWidget {
   static List<String> namelist = [
@@ -121,25 +125,32 @@ class Quran extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<Appconfigprovider>(context);
     return Column(
       children: [
         Center(child: Image.asset('assets/images/image_quran.png')),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: provider.darkmode()
+              ? Themedata.yellowcolor
+              : Themedata.primarylight,
           thickness: 2,
         ),
         Text(
-          'sura name',
-          style: Theme.of(context).textTheme.headline2,
+          AppLocalizations.of(context)!.suraname,
+          style: Theme.of(context).primaryTextTheme.headline2,
         ),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: provider.darkmode()
+              ? Themedata.yellowcolor
+              : Themedata.primarylight,
           thickness: 2,
         ),
         Expanded(
             child: ListView.separated(
           separatorBuilder: (context, index) => Divider(
-            color: Theme.of(context).primaryColor,
+            color: provider.darkmode()
+                ? Themedata.yellowcolor
+                : Themedata.primarylight,
             thickness: 2,
           ),
           itemBuilder: (context, index) {
@@ -152,7 +163,7 @@ class Quran extends StatelessWidget {
                 child: Text(
                   namelist[index],
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline3,
+                  style: Theme.of(context).primaryTextTheme.headline3,
                 ));
           },
           itemCount: namelist.length,
