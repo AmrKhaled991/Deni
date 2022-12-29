@@ -59,7 +59,10 @@ class _BottumsheetState extends State<Bottumsheet> {
   Widget unselctedlanguage(String text) {
     return Text(
       '$text',
-      style: Theme.of(context).primaryTextTheme.headline3,
+      style: Theme.of(context)
+          .primaryTextTheme
+          .headline3!
+          .copyWith(color: Colors.black),
     );
   }
 }
